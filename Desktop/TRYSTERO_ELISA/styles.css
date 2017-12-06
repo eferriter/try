@@ -1,0 +1,471 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body{
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  overflow-x: hidden;
+
+}
+.box_container{
+  background-color: #d9dadb;
+  display:grid;
+  grid-gap:5px;
+  grid-template-columns: 100%;
+  grid-template-areas:
+  "box_nav"
+  "box_logo"
+  "box_header"
+  "box_tracking"
+  "box_main"
+  "box_quote" 
+  "box_footer"; 
+ }
+.box_logo{
+  grid-area:box_logo;
+  background-color: #67c8ef;
+}
+.box_nav{
+  grid-area: box_nav;
+ background-color: #67c8ef;
+
+}
+.box_tracking{
+  grid-area: box_tracking;
+}
+.box_tracking form{
+  background-color: grey;
+}
+.box_quote{
+  grid-area: box_quote;
+}
+.box_main{
+  grid-area: box_main;
+}
+.box_footer{
+  grid-area: box_footer;
+}
+/*cc*/
+.box_header{
+  grid-area: box_header;
+}
+.top{
+  display:flex;
+  flex-direction: row;
+}
+
+img{
+  width:100%;
+}
+strong{
+  font-weight: bold;
+}
+h1{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+h2{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+a
+{
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+
+a:hover
+{
+  color: white;
+}
+
+#menuToggle
+{
+  display: block;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left:-5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 50px;
+  height: 7px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background:grey;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: white;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ *  last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 500px;
+  margin: -100px 0 0 0;
+  padding: 50px;
+  padding-top: 125px;
+  right: -100px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  background-color : #ffcc00;
+  color:white;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's fade it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: scale(1.0, 1.0);
+  opacity: 1;
+}
+
+fieldset{
+  
+  border-style: none;
+  font-size: 150%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+/*  padding: 20px;*/
+}
+form{
+  padding:5%;
+  background-color:#dedfe0;
+  margin-bottom: 5%;
+}
+.box_quote{
+  align-self: center;
+  background-color: orange;
+  color:white;
+  font-family: 'Anton', sans-serif;
+  font-size: 200%;
+  border-radius:40px;
+  margin-top:20%;
+  margin-left:5%;
+  margin-right: 5%;
+  padding:5%;
+  margin-bottom:20%;
+  box-shadow: 10px 10px 13px -2px rgba(71,67,71,1);
+  cursor: pointer;
+}
+#navbar{
+  display:none;
+}
+
+.box_quote:hover{
+  background-color: #ffcc00;
+}
+#track{
+  font-family: 'Anton', sans-serif;
+  border : solid 0px #000000;
+  border-radius : 5px;
+  letter-spacing: 2px;
+  font-size : 20px;
+  color : #ffffff;
+  padding : 1px 17px;
+  background-color : #ff8c00;
+  cursor: pointer;
+  margin-left:20px;
+  box-shadow: 10px 10px 13px -2px rgba(71,67,71,1);
+}
+#track:hover{
+  border : solid 1px orange;
+  background-color: #ffcc00;
+}
+.box_footer{
+   background-color:#869296;
+  padding-top:2%;
+  font-size:12px;
+}
+.icons{
+  color:white;
+  box-sizing: border-box;
+}
+.icons img{
+  width:5%;
+}
+h3{
+  color:white;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color:lime;
+}
+
+#job{
+  height:100px;
+}
+
+#sleep{
+
+  position: absolute;
+  bottom: 20px;
+  left: 26px;
+  font-size:2em;
+  font-size: 1em;
+  color:white;
+  text-shadow: 2px 2px 2px black;
+}
+.box_header{
+  position: relative;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 4px;
+}
+.services{
+  text-align: left;
+  padding-left:2%; 
+}
+.nationwide{
+  padding:5%;
+  text-align:center;
+}
+
+#footnav,#questions{
+  display: none;
+}
+
+
+@media (min-width: 768px) and (max-width: 2000px) {
+  .box_container{
+      display:grid;
+      grid-gap:5px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas:
+      "box_logo box_nav box_nav"
+      "box_header box_header box_header" 
+      "box_tracking box_quote box_quote" 
+      "box_main box_main box_main" 
+      "box_footer box_footer box_footer";
+    }
+
+ body{
+   padding-left:10%;
+   padding-right:10%;
+
+  }
+
+  #sleep{
+    font-size:3em;
+  }
+  #menu,#menuToggle{
+    display:none;
+  }
+  #navbar{
+    display:block;
+  
+  }
+  #navbar ul{
+  list-style: none;
+  display:flex;
+  padding:5%;
+}
+  #navbar li{
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding:5%;
+  font-family: 'Anton', sans-serif;
+  color:white;
+
+}
+.box_tracking{
+  padding:10%;
+}
+
+  .box_footer{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    text-align: left;
+    padding:5%;
+    font-size: 1.5em;
+      
+  }
+  .box_quote{
+    width:50%;
+    text-align: center;
+    margin-top:5%;
+    margin-bottom: 5%;
+    margin-left:15%;
+    align-content: center;
+  }
+
+  #footnav li{
+
+    list-style: none;
+    text-align: left;
+  }
+  #leftfoot,#footnav,#questions{
+    width:33%;
+    padding:5%;
+  }
+ 
+  #contact{
+    width:70%;
+    margin-left:10%;
+    margin-top: 10%;
+  }
+  #footnav,#questions{
+    display:block;
+  }
+}
+#delivery{
+  padding:10%;
+}
+.services{
+  padding:5%;
+}
